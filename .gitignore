@@ -1,0 +1,21 @@
+# Node
+node_modules/
+.pnpm-debug.log*
+.pnpm-store/
+.next/
+
+# Env
+.env
+.env.*
+!.env.example
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+
+# Supabase
+supabase/.temp/
+
+# OS
+.DS_Store
