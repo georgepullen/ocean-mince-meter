@@ -1,0 +1,18 @@
+{
+  "version": 8,
+  "name": "Night Chart (Placeholder)",
+  "metadata": {
+    "note": "Placeholder MapLibre style. Provide a real style JSON via NEXT_PUBLIC_MAP_STYLE_URL."
+  },
+  "sources": {},
+  "layers": [
+    {
+      "id": "background",
+      "type": "background",
+      "paint": {
+        "background-color": "#050b14"
+      }
+    }
+  ]
+}
+

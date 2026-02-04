@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+:root {
+  /* Theme: Night Chart Expedition (default = night) */
+  --background: #050b14;
+  --foreground: #eaf2ff;
+  --surface: #08162a;
+  --surface-2: #0c213a;
+  --border: #15344f;
+  --muted: #9bb2cc;
+  --muted-2: #6f8aa6;
+  --ring: #3dd6d0;
+  --primary: #3dd6d0;
+  --primary-foreground: #031317;
+  --secondary: #4ea7ff;
+  --secondary-foreground: #031021;
+  --accent: #7ddc7a;
+  --warning: #f7c35a;
+  --danger: #ff6b6b;
+  --success: #33d6a6;
+
+  /* Data viz tokens */
+  --data-current-low: #3dd6d0;
+  --data-current-high: #4ea7ff;
+  --data-uncertainty: rgba(61, 214, 208, 0.18);
+  --data-drift-50: rgba(61, 214, 208, 0.22);
+  --data-drift-80: rgba(61, 214, 208, 0.14);
+  --data-drift-95: rgba(61, 214, 208, 0.08);
+  --data-ais-low: rgba(247, 195, 90, 0.14);
+  --data-ais-high: rgba(255, 107, 107, 0.4);
+  --data-gridline: rgba(155, 178, 204, 0.1);
+
+  --radius: 14px;
+  --shadow-panel: 0 0 0 1px rgba(21, 52, 79, 0.9),
+    0 20px 60px rgba(0, 0, 0, 0.55);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-muted-2: var(--muted-2);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-success: var(--success);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-fraunces);
+  --radius: var(--radius);
+  --shadow-panel: var(--shadow-panel);
+}
+
+:root[data-theme="day"] {
+  --background: #f6fbff;
+  --foreground: #0a1b2e;
+  --surface: #ffffff;
+  --surface-2: #eef6ff;
+  --border: #c9d9ea;
+  --muted: #4b6885;
+  --muted-2: #6d8aa8;
+  --ring: #007ea7;
+  --primary: #007ea7;
+  --primary-foreground: #ffffff;
+  --secondary: #1a5fff;
+  --secondary-foreground: #ffffff;
+  --accent: #1b9aaa;
+  --warning: #b86b00;
+  --danger: #d72638;
+  --success: #0e9f6e;
+}
+
+@media (prefers-color-scheme: light) {
+  :root[data-theme="system"] {
+    --background: #f6fbff;
+    --foreground: #0a1b2e;
+    --surface: #ffffff;
+    --surface-2: #eef6ff;
+    --border: #c9d9ea;
+    --muted: #4b6885;
+    --muted-2: #6d8aa8;
+    --ring: #007ea7;
+    --primary: #007ea7;
+    --primary-foreground: #ffffff;
+    --secondary: #1a5fff;
+    --secondary-foreground: #ffffff;
+    --accent: #1b9aaa;
+    --warning: #b86b00;
+    --danger: #d72638;
+    --success: #0e9f6e;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="system"] {
+    --background: #050b14;
+    --foreground: #eaf2ff;
+    --surface: #08162a;
+    --surface-2: #0c213a;
+    --border: #15344f;
+    --muted: #9bb2cc;
+    --muted-2: #6f8aa6;
+    --ring: #3dd6d0;
+    --primary: #3dd6d0;
+    --primary-foreground: #031317;
+    --secondary: #4ea7ff;
+    --secondary-foreground: #031021;
+    --accent: #7ddc7a;
+    --warning: #f7c35a;
+    --danger: #ff6b6b;
+    --success: #33d6a6;
+  }
+}
+
+html {
+  background: var(--background);
+  color: var(--foreground);
+  color-scheme: dark;
+  text-rendering: geometricPrecision;
+  -webkit-text-size-adjust: 100%;
+  position: relative;
+}
+
+:root[data-theme="day"] {
+  color-scheme: light;
+}
+
+:root[data-theme="system"] {
+  color-scheme: light dark;
+}
+
+body {
+  min-height: 100dvh;
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  position: relative;
+  z-index: 1;
+  background: transparent;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--primary) 30%, transparent);
+  color: var(--foreground);
+}
+
+/* Ocean textures + subtle motion (CSS-only) */
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+      1200px circle at 16% 12%,
+      color-mix(in oklab, var(--secondary) 28%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px circle at 82% 72%,
+      color-mix(in oklab, var(--primary) 20%, transparent),
+      transparent 58%
+    ),
+    radial-gradient(
+      1200px circle at 50% 115%,
+      rgba(0, 0, 0, 0.8),
+      transparent 55%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      var(--data-gridline) 0 1px,
+      transparent 1px 84px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      var(--data-gridline) 0 1px,
+      transparent 1px 128px
+    ),
+    repeating-radial-gradient(
+      circle at 32% 28%,
+      rgba(155, 178, 204, 0.06) 0 1px,
+      transparent 1px 20px
+    ),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.22'/%3E%3C/svg%3E");
+  background-blend-mode: screen, screen, normal, normal, normal, overlay,
+    overlay;
+  background-repeat: no-repeat, no-repeat, no-repeat, repeat, repeat, repeat,
+    repeat;
+  background-size: auto, auto, auto, auto, auto, auto, 180px 180px;
+  opacity: 0.9;
+}
+
+html::after {
+  content: "";
+  position: fixed;
+  inset: -18%;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(
+      42% 34% at 20% 35%,
+      rgba(61, 214, 208, 0.18),
+      transparent 60%
+    ),
+    radial-gradient(
+      46% 40% at 78% 58%,
+      rgba(78, 167, 255, 0.16),
+      transparent 62%
+    ),
+    radial-gradient(
+      36% 30% at 52% 40%,
+      rgba(125, 220, 122, 0.08),
+      transparent 62%
+    );
+  filter: blur(14px) saturate(1.15);
+  mix-blend-mode: overlay;
+  opacity: 0.42;
+  animation: ocean-drift 58s ease-in-out infinite alternate;
+}
+
+@keyframes ocean-drift {
+  from {
+    transform: translate3d(-2.8%, -1.8%, 0) rotate(-0.5deg);
+  }
+  to {
+    transform: translate3d(2.8%, 1.8%, 0) rotate(0.5deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html::after {
+    animation: none;
+  }
+}
+
+/* Subtle scrollbars */
+* {
+  scrollbar-color: color-mix(in oklab, var(--border) 85%, transparent)
+    transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--border) 82%, transparent);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--border) 92%, transparent);
+}
+
+/* MapLibre controls, themed */
+.maplibregl-ctrl-group {
+  background: color-mix(in oklab, var(--surface) 86%, transparent) !important;
+  border: 1px solid color-mix(in oklab, var(--border) 88%, transparent) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.maplibregl-ctrl-group button {
+  color: var(--foreground) !important;
+}
+
+.maplibregl-ctrl-group button:hover {
+  background: color-mix(in oklab, var(--surface-2) 70%, transparent) !important;
+}
+
+.maplibregl-ctrl-attrib {
+  background: color-mix(in oklab, var(--surface) 78%, transparent) !important;
+  color: var(--muted) !important;
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent) !important;
+  border-radius: 999px;
+  padding: 2px 8px;
+  margin: 8px;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: var(--muted) !important;
+  text-decoration: none;
+}
+
+.maplibregl-ctrl-attrib a:hover {
+  text-decoration: underline;
+}
