@@ -1,11 +1,30 @@
-# Ocean Risk Monorepo
+# Ocean Mince Meter
 
-Monorepo layout:
+Minimal monorepo for a single experience: a map with live ship dots.
 
-- `apps/web`: Next.js app (frontend + API routes)
-- `packages/db`: database helpers and schema utilities (`@ocean/db`)
-- `packages/shared`: shared TS types and zod schemas (`@ocean/shared`)
-- `services/pipeline`: Python ingestion + model jobs
-- `supabase`: Supabase CLI config + migrations
+## Layout
 
-This repo is bootstrapped to follow the setup guide in the conversation. Next steps are to scaffold the Next.js app and install dependencies.
+- `apps/web`: Next.js app (map UI + API routes)
+- `packages/db`: shared Supabase config helpers (`@ocean/db`)
+- `services/pipeline`: AIS capture + raw-point ingest scripts
+- `supabase`: Supabase config + migrations
+
+## Local dev
+
+Start Supabase:
+
+```bash
+supabase start
+supabase db reset
+```
+
+Run the app:
+
+```bash
+pnpm dev
+```
+
+Core endpoints:
+
+- `GET /api/ais-latest`
+- `GET /api/tiles?z&x&y&time&rawWindowMinutes`

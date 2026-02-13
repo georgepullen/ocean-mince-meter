@@ -13,6 +13,7 @@ node_modules/
 .venv/
 __pycache__/
 *.py[cod]
+services/pipeline/artifacts/
 
 # Supabase
 supabase/.temp/

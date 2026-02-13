@@ -1,10 +1,14 @@
 {
   "version": 8,
-  "name": "Night Chart (Placeholder)",
-  "metadata": {
-    "note": "Placeholder MapLibre style. Provide a real style JSON via NEXT_PUBLIC_MAP_STYLE_URL."
+  "name": "Night Chart",
+  "sources": {
+    "osm": {
+      "type": "raster",
+      "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+      "tileSize": 256,
+      "attribution": "© OpenStreetMap contributors"
+    }
   },
-  "sources": {},
   "layers": [
     {
       "id": "background",
@@ -13,6 +17,18 @@
         "background-color": "#050b14"
       }
     }
+    ,
+    {
+      "id": "basemap",
+      "type": "raster",
+      "source": "osm",
+      "paint": {
+        "raster-opacity": 0.9,
+        "raster-saturation": -0.35,
+        "raster-contrast": 0.15,
+        "raster-brightness-min": 0.05,
+        "raster-brightness-max": 0.95
+      }
+    }
   ]
 }
-

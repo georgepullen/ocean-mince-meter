@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
+import { getSupabaseServerConfig } from "@ocean/db";
 
-export const supabaseServer = () =>
-  createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
+export const supabaseServer = () => {
+  const { url, serviceRoleKey } = getSupabaseServerConfig();
+  return createClient(url, serviceRoleKey);
+};
