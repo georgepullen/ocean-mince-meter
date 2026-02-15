@@ -20,3 +20,8 @@ supabase/.temp/
 
 # OS
 .DS_Store
+
+# Repomix
+repomix-output.md
+repomix.config.json
+.repomixignore
