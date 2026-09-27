@@ -7,7 +7,7 @@ ingest → Codex agent runtime → watch-facing messages.
 ## What happened
 
 - **2026-06-15/16 (AWST)**: hardware staged at Point Samson
-  (`media/buoy-on-sand.jpg` (pink buoy shell with the buoy-node electronics) with the buoy-node electronics),
+  (`media/buoy-on-sand.jpg`, pink buoy shell with the buoy-node electronics),
   shore station run from the back of the 4WD with laptop + ingest service.
 - **2026-06-16 ~14:00 AWST**: first live swim with the full loop active. The
   route below is that swim, as shown by the Suunto app
