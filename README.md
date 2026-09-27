@@ -50,10 +50,11 @@ flowchart LR
 
 ## Field status
 
-First end-to-end field test completed at Port Samson, Australia: watch →
-buoy → LoRa → shore → Pi → live codex analysis, with the watch displaying
-runtime messages mid-swim. Test routes are recorded on the Suunto watch and
-replayed through the runtime for reproducible transcripts.
+First end-to-end field test completed at Point Samson, Western Australia
+(June 2026): watch → buoy → LoRa → shore → Pi → live codex analysis, with
+the watch displaying runtime messages mid-swim. See [demo/](demo/) for the
+site, the recovered GPS route, and the replay transcript that regenerates
+the runtime's watch messages from the real track.
 
 ## Local development (backend)
 
