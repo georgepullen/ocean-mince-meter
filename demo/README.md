@@ -1,4 +1,4 @@
-# First field test — Point Samson, Western Australia (June 2026)
+# First field test: Point Samson, Western Australia (June 2026)
 
 End-to-end system test of the Ocean Mince Meter swim-buoy pipeline:
 Suunto Race 2 → in-buoy ESP32 → LoRa → shore-side ESP32 → Raspberry Pi
@@ -7,7 +7,7 @@ ingest → Codex agent runtime → watch-facing messages.
 ## What happened
 
 - **2026-06-15/16 (AWST)**: hardware staged at Point Samson
-  (`media/buoy-on-sand.jpg` — pink buoy shell with the buoy-node electronics),
+  (`media/buoy-on-sand.jpg` (pink buoy shell with the buoy-node electronics) with the buoy-node electronics),
   shore station run from the back of the 4WD with laptop + ingest service.
 - **2026-06-16 ~14:00 AWST**: first live swim with the full loop active. The
   route below is that swim, as shown by the Suunto app
@@ -20,8 +20,8 @@ ingest → Codex agent runtime → watch-facing messages.
 
 `transcript.md` / `transcript.json` are produced by
 `codex-loop/bin/replay-swim` ([suunto-codex-loop](https://github.com/georgepullen/suunto-codex-loop)),
-which feeds the route back through the **real runtime** — same ingest
-service, same wake throttling, same prompt and delivery path — so the
+which feeds the route back through the **real runtime** (same ingest
+service, same wake throttling, same prompt and delivery path), so the
 messages are 1:1 with what the watch would have shown, modulo ocean
 conditions (the runtime fetches live weather/marine at replay time, not
 conditions from the day).
@@ -30,7 +30,7 @@ conditions from the day).
 
 1. The Suunto app map screenshot (359×780) was contrast-stretched to isolate
    the faint track ribbon over the water
-   (`media/route-digitized-overlay.png` — recovered polyline drawn in red).
+   (`media/route-digitized-overlay.png`, recovered polyline drawn in red).
 2. The map was georeferenced from its own scale bar (0.5 mi / 176 px →
    4.572 m/px) anchored on the OSM Honeymoon Cove beach centroid; the OSM
    coastline re-projected through the same transform hugs the photographed
@@ -44,5 +44,5 @@ conditions from the day).
 | ![buoy](media/buoy-on-sand.jpg) | ![bay](media/point-samson-bay.jpg) |
 | ![beach](media/samson-beach-headland.jpg) | ![shore](media/swim-shoreline.jpg) |
 
-*The swim buoy staged on the sand; Honeymoon Cove bay, Point Samson WA —
+*The swim buoy staged on the sand; Honeymoon Cove bay, Point Samson WA.
 swim area shown in `media/suunto-route-screenshot.jpg`.*

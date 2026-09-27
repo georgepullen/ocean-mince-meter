@@ -1,8 +1,10 @@
 # Ocean Mince Meter
 
 Open-water swim safety system for solo sea swims. It answers one question the
-whole way down: **how dangerous is this water, right now, for this swimmer** —
+whole way down: **how dangerous is this water, right now, for this swimmer**,
 from currents and weather to the ships transiting the swim line.
+
+![Swim buoy staged on the sand at Point Samson, Western Australia](demo/media/buoy-on-sand.jpg)
 
 Three components, three repos:
 
@@ -26,24 +28,23 @@ flowchart LR
     WX[Open-Meteo<br/>weather + marine] --> A
 ```
 
-## Why this is interesting engineering
+## Implementation notes
 
-- **Reverse-engineered wearable protocol.** The Suunto Race 2 companion BLE
-  protocol is undocumented; the watch-side link, telemetry packet and a
-  read-only SDK (+ MCP server) were built from protocol research in
+- **Wearable protocol, reverse engineered.** The Suunto Race 2 companion BLE
+  protocol is undocumented. The watch-side link, the telemetry packet, a
+  read-only SDK and an MCP server were built from protocol research in
   `suunto/reverse-engineering` and stabilized in `suunto/sdk`.
-- **Constraint-driven agent design.** The LLM in the loop is not a chatbot:
-  it runs under a hard output budget (80 ASCII chars, 3 messages per shore
-  response), a wake budget (≤1 run/min, silent on stale frames), and a
-  briefing/heartbeat policy that distinguishes sea swims from pool/inland
-  test sessions before it speaks.
+- **Hard output and wake budgets.** The agent runs under an 80 ASCII char
+  limit with up to 3 messages per shore response, at most one wake per
+  minute, and stays silent on stale frames. A briefing/heartbeat policy
+  separates sea swims from pool and inland test sessions before it speaks.
 - **End-to-end data integrity.** HR and GPS survive watch → MCU → radio →
-  radio → HTTP → agent; the shore node persists endpoint/token/TLS config in
-  NVS and validates TLS rather than trusting the LAN.
+  radio → HTTP → agent. The shore node persists endpoint, token and TLS mode
+  in NVS and validates TLS certificates rather than trusting the LAN.
 - **Deterministic replay.** `codex-loop/bin/replay-swim` feeds a recorded
-  GPS/HR route back through the *real* runtime — same ingest, same agent,
-  same delivery path — regenerating the exact watch messages a swim would
-  have produced. Used for debriefs and demos.
+  GPS/HR route back through the real runtime (same ingest, same agent, same
+  delivery path) to regenerate the watch messages a swim would have
+  produced. Used for debriefs and demos.
 - **Live ship traffic.** The backend ingests `aisstream` into PostGIS and
   serves time-windowed vessel positions to the map; the same AIS context is
   available to the runtime as swim-time vessel risk.
