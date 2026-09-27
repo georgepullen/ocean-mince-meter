@@ -4,7 +4,8 @@ Open-water swim safety system for solo sea swims. It answers one question the
 whole way down: **how dangerous is this water, right now, for this swimmer**,
 from currents and weather to the ships transiting the swim line.
 
-![Swim buoy staged on the sand at Point Samson, Western Australia](demo/media/buoy-on-sand.jpg)
+| ![Swim buoy staged on the sand at Point Samson, Western Australia](demo/media/buoy-on-sand.jpg) | ![Codex runtime watch alert, replayed from the real first-test track](demo/media/watch-alert.png) |
+|---|---|
 
 Three components, three repos:
 
