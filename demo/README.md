@@ -43,6 +43,11 @@ conditions from the day).
 |---|---|
 | ![buoy](media/buoy-on-sand.jpg) | ![bay](media/point-samson-bay.jpg) |
 | ![beach](media/samson-beach-headland.jpg) | ![shore](media/swim-shoreline.jpg) |
+| ![nodes](media/lora-nodes-bench.jpg) | ![watch](media/watch-alert-real.jpg) |
 
-*The swim buoy staged on the sand; Honeymoon Cove bay, Point Samson WA.
-swim area shown in `media/suunto-route-screenshot.jpg`.*
+*Top/bottom left: the swim buoy staged on the sand. Right: Honeymoon Cove bay,
+Point Samson WA — swim area in `media/suunto-route-screenshot.jpg`. Bottom
+row: the two LoRa ESP32 nodes link-testing in May 2026 (buoy and shore OLEDs
+showing pack voltages and RSSI), and the Suunto Race 2 on-screen during live
+testing: a yellow `POWER` alert, `Tow buoy power low; stay close to shore…`,
+with shore and buoy pack voltages live.*
