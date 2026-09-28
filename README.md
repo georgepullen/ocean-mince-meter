@@ -2,8 +2,8 @@
 
 One node ashore, one in your swim buoy, a smart watch, and an agent running on a Rasberry Pi back at home- thats all there is to it. Ocean Mince Meter answers the question of: **how dangerous is this water, right now, for this swimmer**, given all the data points that can feasibly be transported from the sea, back to the agent server. This is used to feed information to the swimmer via their smart watch, which could include information about the currents, weather or any ships that could potentially intercept their trajectory. The main limitation of Mince Meter v1 is that the shore and buoy node communicate over LoRa, which meant communication was temperamental and ineffective for any serious swim- this will be remedied in v2, which will use a 5G module / satelite communication.
 
-| ![Swim buoy staged on the sand at Point Samson, Western Australia](demo/media/buoy-on-sand.jpg) | ![The two LoRa ESP32 nodes bench-testing, May 2026](demo/media/lora-nodes-bench.jpg) | ![Suunto Race 2 showing a live alert from the runtime, May 2026](demo/media/watch-alert-real.jpg) |
-|---|---|---|
+| ![Swim buoy staged on the sand at Point Samson, Western Australia](demo/media/buoy-on-sand.jpg) | ![The two LoRa ESP32 nodes bench-testing, May 2026](demo/media/lora-nodes-bench.jpg) | ![Suunto Race 2 showing a live alert from the runtime, May 2026](demo/media/watch-alert-real.jpg) | ![Swim start at Point Samson with the runtime briefing overlaid](demo/media/swim-start.gif) |
+|---|---|---|---|
 
 Three components, three repos:
 
