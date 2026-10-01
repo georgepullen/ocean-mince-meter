@@ -29,22 +29,16 @@ flowchart LR
 
 ## Implementation notes
 
-- **Wearable protocol, reverse engineered.** The Suunto Race 2 companion BLE
-  protocol is undocumented. The watch-side link, the telemetry packet, a
-  read-only SDK and an MCP server were built from protocol research in
-  `suunto/reverse-engineering` and stabilized in `suunto/sdk`.
-- **Hard output and wake budgets.** The agent runs under an 80 ASCII char
-  limit with up to 3 messages per shore response, at most one wake per
-  minute, and stays silent on stale frames. A briefing/heartbeat policy
-  separates sea swims from pool and inland test sessions before it speaks.
-- **End-to-end data integrity.** HR and GPS survive watch → MCU → radio →
-  radio → HTTP → agent. The shore node persists endpoint, token and TLS mode
-  in NVS and validates TLS certificates rather than trusting the LAN.
-- **Deterministic replay.** `codex-loop/bin/replay-swim` feeds a recorded
+- The Suunto Race 2 BLE protocol is undocumented. The esp32 <-> watch link, SDK and an MCP server were built from many hours of reverse engineering the BLE protocol of this watch.
+- The text that the agent can send is limited to 80 chars, which somewhat limits the amount of detail it can include.
+- The codex server is polled every minute, but deterministic gates decide whether or not the OAI API request is actually warranted (I prefer not to be nagged by an agent with useless info whilst swimming)
+- Briefing/heartbeat policy discerns sea swims from pool / inland test sessions
+- HR and GPS survive watch → MCU → radio → radio → HTTP → agent. The shore node persists endpoint, token and TLS mode in NVS and validates TLS certificates rather than trusting the LAN.
+- `codex-loop/bin/replay-swim` feeds a recorded
   GPS/HR route back through the real runtime (same ingest, same agent, same
   delivery path) to regenerate the watch messages a swim would have
   produced. Used for debriefs and demos.
-- **Live ship traffic.** The backend ingests `aisstream` into PostGIS and
+- The backend ingests `aisstream` into PostGIS and
   serves time-windowed vessel positions to the map; the same AIS context is
   available to the runtime as swim-time vessel risk.
 
